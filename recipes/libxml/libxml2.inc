@@ -20,7 +20,6 @@ EXTRA_OECONF = "\
  --with-c14n"
 
 XPY = " --without-python"
-XPY_virtclass-native = " --with-python=${PYTHON_DIR}" 
 
 EXTRA_OECONF += "${XPY}"
 
