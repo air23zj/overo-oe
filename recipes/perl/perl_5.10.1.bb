@@ -1,11 +1,11 @@
 DESCRIPTION = "Perl is a popular scripting language."
 HOMEPAGE = "http://www.perl.org/"
 SECTION = "devel/perl"
-LICENSE = "Artistic|GPLv1"
+LICENSE = "Artistic|GPLv1+"
 PRIORITY = "optional"
 # We need gnugrep (for -I)
 DEPENDS = "virtual/db perl-native grep-native"
-PR = "r13"
+PR = "r14"
 
 # 5.10.1 has Module::Build built-in
 PROVIDES += "libmodule-build-perl"
@@ -97,6 +97,17 @@ export LDDLFLAGS = "${LDFLAGS} -shared"
 # We're almost Debian, aren't we?
 CFLAGS += "-DDEBIAN"
 
+do_nolargefile() {
+	sed -i -e "s,\(uselargefiles=\)'define',\1'undef',g" \
+		-e "s,\(d_readdir64_r=\)'define',\1'undef',g" \
+		-e "s,\(readdir64_r_proto=\)'\w+',\1'0',g" \
+		-e "/ccflags_uselargefiles/d" \
+		-e "s/-Duselargefiles//" \
+		-e "s/-D_FILE_OFFSET_BITS=64//" \
+		-e "s/-D_LARGEFILE_SOURCE//" \
+		${S}/Cross/config.sh-${TARGET_ARCH}-${TARGET_OS}
+}
+
 do_configure() {
         # Make hostperl in build directory be the native perl
         ln -sf ${HOSTPERL} hostperl
@@ -127,6 +138,8 @@ do_configure() {
                        -e "s,\(d_sockatmarkproto=\)'\w+',\1'0',g" \
                     config.sh-${TARGET_ARCH}-${TARGET_OS}
         fi
+
+	${@base_contains('DISTRO_FEATURES', 'largefile', '', 'do_nolargefile', d)}
 
         # Update some paths in the configuration
         sed -i -e 's,@DESTDIR@,${D},g' \

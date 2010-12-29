@@ -6,9 +6,7 @@ DEPENDS_virtclass-native = "zlib-native ncurses-native lzo-native gettext-native
 
 inherit autotools gettext
 
-DEFAULT_PREFERENCE = "-1"
-
-INC_PR = "r32"
+INC_PR = "r34"
 
 # allows for a release candidate
 RC ?= ""
@@ -126,8 +124,8 @@ do_install () {
 	mkdir -p ${D}${base_bindir}
 
         sbinprogs="agetty blockdev ctrlaltdel cfdisk"
-        sbinprogs_a="pivot_root hwclock mkswap shutdown mkfs.minix fsck.minix losetup swapon fdisk fsck blkid vigr vipw"
-        usrbinprogs_a="chfn chsh hexdump last logger mesg newgrp renice wall setsid chrt reset cal script"
+        sbinprogs_a="pivot_root hwclock mkswap shutdown mkfs.minix fsck.minix losetup swapon fdisk fsck blkid vigr vipw uuidd"
+        usrbinprogs_a="chfn chsh hexdump last logger mesg newgrp renice wall setsid chrt reset cal script flock"
         usrsbinprogs_a="readprofile"
         binprogs_a="dmesg kill more umount mount login"
 
@@ -213,11 +211,15 @@ pkg_postinst_${PN} () {
 	update-alternatives --install ${bindir}/chfn chfn chfn.${PN} 100
 	update-alternatives --install ${bindir}/newgrp newgrp newgrp.${PN} 100
 	update-alternatives --install ${bindir}/chsh chsh chsh.${PN} 100
+	update-alternatives --install ${bindir}/cal cal cal.${PN} 100
+	update-alternatives --install ${bindir}/script script script.${PN} 100
+	update-alternatives --install ${bindir}/flock flock flock.${PN} 100
 	update-alternatives --install ${base_bindir}/login login login.${PN} 100
 	update-alternatives --install ${base_sbindir}/vipw vipw vipw.${PN} 100
 	update-alternatives --install ${base_sbindir}/vigr vigr vigr.${PN} 100
 	update-alternatives --install ${bindir}/setsid setsid setsid.${PN} 100
 	update-alternatives --install ${bindir}/chrt chrt chrt.${PN} 100
+	update-alternatives --install ${base_sbindir}/uuidd uuidd uuidd.${PN} 100
 	
 	# There seems to be problem, atleast on nslu2, with these, until they are
 	# fixed the busybox ones have higher priority
@@ -231,7 +233,7 @@ pkg_prerm_${PN} () {
 	test -x ${base_sbindir}/pivot_root.${PN} && \
 	update-alternatives --remove pivot_root pivot_root.${PN}
 
-	for i in dmesg kill more halt hwclock mkswap reboot shutdown sln mkfs.minix fsck.minix hexdump setsid chrt last logger mesg renice wall vipw vigr chfn newgrp chsh login; do
+	for i in dmesg kill more halt hwclock mkswap reboot shutdown sln mkfs.minix fsck.minix hexdump setsid chrt last logger mesg renice wall vipw vigr chfn newgrp chsh login cal script flock uuidd; do
 		update-alternatives --remove $i $i.${PN}
 	done
 }

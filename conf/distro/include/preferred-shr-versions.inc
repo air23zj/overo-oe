@@ -20,9 +20,6 @@ LINUX_LIBC_HEADERS_VERSION ?= "2.6.32"
 PREFERRED_VERSION_linux-libc-headers = "${LINUX_LIBC_HEADERS_VERSION}"
 PREFERRED_VERSION_linux-libc-headers-native = "${LINUX_LIBC_HEADERS_VERSION}"
 
-# override EFL_SRCREV from sane-srcrevs.inc
-# EFL_SRCREV ?= "44424"
-
 # specifically set an openssh version
 # NOTE: whenever changing the version here make sure
 #       to check we won't loose our specific config !!!
@@ -45,12 +42,12 @@ PREFERRED_VERSION_usbutils      = "0.86"
 PREFERRED_VERSION_wpa-supplicant = "0.6.9"
 PREFERRED_VERSION_glib-2.0      = "2.24.1"
 PREFERRED_VERSION_glib-2.0-native = "2.24.1"
-PREFERRED_VERSION_openssl = "1.0.0a"
-PREFERRED_VERSION_openssl-native = "1.0.0a"
+PREFERRED_VERSION_openssl = "1.0.0b"
+PREFERRED_VERSION_openssl-native = "1.0.0b"
 UDEV_GE_141 = "1"
 
 PREFERRED_VERSION_postgresql = "8.4.4"
-ANGSTROM_QT_VERSION ?= "4.7.0"
+ANGSTROM_QT_VERSION ?= "4.7.1"
 PREFERRED_VERSION_qt4-tools-native = "${ANGSTROM_QT_VERSION}"
 PREFERRED_VERSION_qt4-tools-sdk = "${ANGSTROM_QT_VERSION}"
 PREFERRED_VERSION_qt4-embedded = "${ANGSTROM_QT_VERSION}"

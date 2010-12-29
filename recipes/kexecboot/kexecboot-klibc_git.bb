@@ -1,10 +1,9 @@
 RDEPENDS_${PN} = "kexec-klibc"
 PV = "0.5"
-PR = "r19+gitr${SRCREV}"
+PR = "r21+gitr${SRCREV}"
 
 SRC_URI = "git://git.linuxtogo.org/home/groups/kexecboot/kexecboot.git;protocol=git "
-
-SRCREV = "cd52db828d24a239698f142e9b028c6bc0d6a21a"
+SRCREV = "d590e063112bb75e6995a0d09afcfac13c931f9f"
 S = "${WORKDIR}/git"
 
 # the binary is statically linked against klibc

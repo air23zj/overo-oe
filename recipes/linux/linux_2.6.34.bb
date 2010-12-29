@@ -1,6 +1,6 @@
 require linux.inc
 
-PR = "r4"
+PR = "r5"
 
 module_autoload_ohci-hcd_omap5912osk = "ohci-hcd"
 
@@ -15,9 +15,11 @@ DEFAULT_PREFERENCE_qemux86 = "1"
 DEFAULT_PREFERENCE_lite5200 = "1"
 DEFAULT_PREFERENCE_omap5912osk = "1"
 DEFAULT_PREFERENCE_tqm8540 = "1"
-DEFAULT_PREFERENCE_ts72xx = "1"
+DEFAULT_PREFERENCE_ts72xx = "-1"
+DEFAULT_PREFERENCE_om-gta01 = "1"
+DEFAULT_PREFERENCE_om-gta02 = "1"
 
-SRC_URI = "${KERNELORG_MIRROR}/pub/linux/kernel/v2.6/${P}.tar.bz2;name=kernel \
+SRC_URI = "${KERNELORG_MIRROR}/pub/linux/kernel/v2.6/linux-${PV}.tar.bz2;name=kernel \
            ${KERNELORG_MIRROR}/pub/linux/kernel/v2.6/patch-${PV}.7.bz2;apply=yes;name=stablepatch \
            file://ARM-Add-support-for-LZMA-compressed-kernel-images.patch;status=pending \
            file://defconfig"
@@ -43,7 +45,22 @@ SRC_URI_append_ts72xx = " \
            file://0016-ts72xx_nand_flash.patch \
            file://0017-ep93xx_spi.patch \
            file://0018-ts72xx_spi_tmp124.patch \
-           file://0019-watchdog-ts72xx_wdt-disable-watchdog-at-probe.patch \
+           file://0019-ts72xx-use-CPLD-watchdog-for-reset.patch \
+           file://0020-ethoc-ts7300-fixes.patch \
+           file://0021-ts7300-add-ethernet-support.patch \
+           file://0022-watchdog-ts72xx_wdt-disable-watchdog-at-probe.patch \
+           file://0024-TS-72XX-LCD-console-driver.patch \
+           file://0025-ts72xx-add-lcd-linux-driver.patch \
+           "
+
+SRC_URI_append_om-gta01 = " \
+           file://openmoko.patch \
+           file://shr.patch \
+           "
+
+SRC_URI_append_om-gta02 = " \
+           file://openmoko.patch \
+           file://shr.patch \
            "
 
 SRC_URI[kernel.md5sum] = "10eebcb0178fb4540e2165bfd7efc7ad"
