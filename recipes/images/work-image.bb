@@ -7,7 +7,7 @@
 
 ANGSTROM_EXTRA_INSTALL ?= "\
             kernel-module-g-ether \
-#            kernel-module-g-serial \
+            kernel-module-g-serial \
 #            kernel-module-omap2-mcspi \
             devmem2 \
             openssh-ssh \
