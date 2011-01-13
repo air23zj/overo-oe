@@ -1,5 +1,5 @@
 diff --git git/board/overo/overo.h-orig git/board/overo/overo.h
-index 33a92e4..b33f2fb 100644
+index 33a92e4..b03027c 100644
 --- git/board/overo/overo.h-orig
 +++ git/board/overo/overo.h
 @@ -144,8 +144,8 @@ const omap3_sysinfo sysinfo = {
@@ -8,8 +8,30 @@ index 33a92e4..b33f2fb 100644
  	MUX_VAL(CP(DSS_ACBIAS),		(IDIS | PTD | DIS | M0)) /*DSS_ACBIAS*/\
 -	MUX_VAL(CP(DSS_DATA0),		(IDIS | PTD | DIS | M0)) /*DSS_DATA0*/\
 -	MUX_VAL(CP(DSS_DATA1),		(IDIS | PTD | DIS | M0)) /*DSS_DATA1*/\
-+	MUX_VAL(CP(DSS_DATA0),		(IDIS | PTD | DIS | M4)) /*DSS_DATA0*/\
-+	MUX_VAL(CP(DSS_DATA1),		(IDIS | PTD | DIS | M4)) /*DSS_DATA1*/\
++	MUX_VAL(CP(DSS_DATA0),		(IEN  | PTD | EN  | M4)) /*GPIO_70 - IRLED_EN1*/\
++	MUX_VAL(CP(DSS_DATA1),		(IEN  | PTD | EN  | M4)) /*GPIO_71 - IRLED_EN0*/\
  	MUX_VAL(CP(DSS_DATA2),		(IDIS | PTD | DIS | M0)) /*DSS_DATA2*/\
  	MUX_VAL(CP(DSS_DATA3),		(IDIS | PTD | DIS | M0)) /*DSS_DATA3*/\
  	MUX_VAL(CP(DSS_DATA4),		(IDIS | PTD | DIS | M0)) /*DSS_DATA4*/\
+@@ -188,7 +188,7 @@ const omap3_sysinfo sysinfo = {
+ 	MUX_VAL(CP(CAM_D11),		(IEN  | PTD | DIS | M0)) /*CAM_D11*/\
+ 	MUX_VAL(CP(CAM_XCLKB),		(IDIS | PTD | DIS | M0)) /*CAM_XCLKB*/\
+ 	MUX_VAL(CP(CAM_WEN),		(IEN  | PTD | DIS | M0)) /*CAM_WEN*/\
+-	MUX_VAL(CP(CAM_STROBE),		(IDIS | PTD | DIS | M0)) /*CAM_STROBE*/\
++	MUX_VAL(CP(CAM_STROBE),		(IEN  | PTD | EN  | M4)) /*GPIO_126 - CPU_TRIGGER*/\
+ 	MUX_VAL(CP(CSI2_DX0),		(IEN  | PTD | EN  | M4)) /*GPIO_112*/\
+ 	MUX_VAL(CP(CSI2_DY0),		(IEN  | PTD | EN  | M4)) /*GPIO_113*/\
+ 	MUX_VAL(CP(CSI2_DX1),		(IEN  | PTD | EN  | M4)) /*GPIO_114*/\
+@@ -226,10 +226,10 @@ const omap3_sysinfo sysinfo = {
+ 	MUX_VAL(CP(MCBSP3_DR),		(IDIS | PTD | DIS | M1)) /*UART2_RTS*/\
+ 	MUX_VAL(CP(MCBSP3_CLKX),	(IDIS | PTD | DIS | M1)) /*UART2_TX*/\
+ 	MUX_VAL(CP(MCBSP3_FSX),		(IEN  | PTD | DIS | M1)) /*UART2_RX*/\
+-	MUX_VAL(CP(UART2_CTS),		(IEN  | PTD | DIS | M4)) /*GPIO_144 - LCD_EN*/\
++	MUX_VAL(CP(UART2_CTS),		(IEN  | PTD | EN  | M4)) /*GPIO_144*/\
+ 	MUX_VAL(CP(UART2_RTS),		(IEN  | PTD | DIS | M4)) /*GPIO_145*/\
+ 	MUX_VAL(CP(UART2_TX),		(IEN  | PTD | DIS | M4)) /*GPIO_146*/\
+-	MUX_VAL(CP(UART2_RX),		(IEN  | PTD | DIS | M4)) /*GPIO_147*/\
++	MUX_VAL(CP(UART2_RX),		(IEN  | PTD | EN  | M4)) /*GPIO_147 - IRLED_PWM*/\
+ 	MUX_VAL(CP(UART1_TX),		(IDIS | PTD | DIS | M0)) /*UART1_TX*/\
+ 	MUX_VAL(CP(UART1_RTS),		(IEN  | PTU | DIS | M4)) /*GPIO_149*/ \
+ 	MUX_VAL(CP(UART1_CTS),		(IEN  | PTU | DIS | M4)) /*GPIO_150-MMC3_WP*/\
