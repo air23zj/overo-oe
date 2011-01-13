@@ -21,6 +21,7 @@ SRC_URI_append = " \
            file://${BOOT_SPLASH} \
            file://mt9p001-board-overo.patch \
            file://musb-enable-revert.patch \
+           file://no-gpio-in-board.patch \
            "
 
 do_configure_prepend() {

@@ -1,0 +1,41 @@
+diff --git git/arch/arm/mach-omap2/board-overo.c-orig git/arch/arm/mach-omap2/board-overo.c
+index 26cfff5..0959cac 100644
+--- git/arch/arm/mach-omap2/board-overo.c-orig
++++ git/arch/arm/mach-omap2/board-overo.c
+@@ -230,6 +230,7 @@ static int dvi_enabled;
+ 
+ static void __init overo_display_init(void)
+ {
++/*
+ 	if ((gpio_request(OVERO_GPIO_LCD_EN, "OVERO_GPIO_LCD_EN") == 0) &&
+ 	    (gpio_direction_output(OVERO_GPIO_LCD_EN, 1) == 0))
+ 		gpio_export(OVERO_GPIO_LCD_EN, 0);
+@@ -243,6 +244,7 @@ static void __init overo_display_init(void)
+ 	else
+ 		printk(KERN_ERR "could not obtain gpio for "
+ 					"OVERO_GPIO_LCD_BL\n");
++*/
+ }
+ 
+ static int overo_panel_enable_dvi(struct omap_dss_device *dssdev)
+@@ -284,16 +286,20 @@ static int overo_panel_enable_lcd(struct omap_dss_device *dssdev)
+ 		return -EINVAL;
+ 	}
+ 
++/*
+ 	gpio_set_value(OVERO_GPIO_LCD_EN, 1);
+ 	gpio_set_value(OVERO_GPIO_LCD_BL, 1);
++*/
+ 	lcd_enabled = 1;
+ 	return 0;
+ }
+ 
+ static void overo_panel_disable_lcd(struct omap_dss_device *dssdev)
+ {
++/*
+ 	gpio_set_value(OVERO_GPIO_LCD_EN, 0);
+ 	gpio_set_value(OVERO_GPIO_LCD_BL, 0);
++*/
+ 	lcd_enabled = 0;
+ }
+ 
