@@ -19,9 +19,9 @@ SRC_URI = "git://www.sakoman.com/git/linux-omap-2.6.git;branch=omap3-2.6.34;prot
 
 SRC_URI_append = " \
            file://${BOOT_SPLASH} \
-           file://mt9p001-board-overo.patch \
            file://musb-enable-revert.patch \
            file://no-gpio-in-board.patch \
+           file://spidev-enable.patch \
            "
 
 do_configure_prepend() {
