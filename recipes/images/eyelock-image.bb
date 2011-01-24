@@ -9,6 +9,7 @@ IMAGE_EXTRA_INSTALL ?= " \
   opencv-samples \
   task-native-sdk \
   gdbserver \
+  alsa-utils-aplay \
  "
 
 BASE_INSTALL = " \
@@ -42,4 +43,4 @@ IMAGE_PREPROCESS_COMMAND = "create_etc_timestamp"
 export IMAGE_BASENAME = "eyelock-image"
 IMAGE_LINGUAS = ""
 
-
+am
