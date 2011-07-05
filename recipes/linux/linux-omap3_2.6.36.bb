@@ -14,7 +14,9 @@ SRC_URI = "git://www.sakoman.com/git/linux-omap-2.6.git;branch=omap-2.6.36;proto
            file://${BOOT_SPLASH} \
            file://spidev-default-speed.patch \
            file://no-toggle-gpio-144-145.patch \
-           file://mcbsp-debug-enable.patch \
+#           file://dma-debug.patch \
+           file://omap-request-dma.patch \
+#	   file://mcbsp-dump-clock.patch \
            "
 
 MUSB_MODE ?= "peripheral"
